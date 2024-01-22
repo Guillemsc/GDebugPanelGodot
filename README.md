@@ -4,7 +4,8 @@
 [![Twitter Follow](https://img.shields.io/badge/twitter-%406uillem-blue.svg?label=Follow)](https://twitter.com/6uillem)
 <img src="https://img.shields.io/badge/Godot-v4.x-%23478cbf?logo=godot-engine&logoColor=cyian&color=green">
 
-![LogoWide](https://github.com/Guillemsc/GTweensGodot/assets/17142208/704636fa-27da-42c3-b9c5-a5bc6e6a870c)
+![LogoWide](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/240af595-8a65-417e-aa3b-386834e6d62f)
+
 
 GTweens-Godot is a lightweight and versatile tweening library for Godot 4 with C#. 
 This library simplifies the process of creating animations and transitions in your Godot projects, allowing you to bring your game elements to life with ease.
