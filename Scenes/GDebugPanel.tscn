@@ -1,0 +1,173 @@
+[gd_scene load_steps=15 format=3 uid="uid://os30dycrhvs0"]
+
+[ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/Views/DebugPanelView.cs" id="1_3o12x"]
+[ext_resource type="FontFile" uid="uid://s3os5vbnjky3" path="res://addons/GDebugPanelGodot/Fonts/SpaceMono-Bold.ttf" id="1_3wdhi"]
+[ext_resource type="PackedScene" uid="uid://cb1ukmkhnqqee" path="res://addons/GDebugPanelGodot/Scenes/DynamicInfoDebugActionWidget.tscn" id="3_c1kvk"]
+[ext_resource type="PackedScene" uid="uid://bqkowvmnlkmt8" path="res://addons/GDebugPanelGodot/Scenes/InfoDebugActionWidget.tscn" id="3_es4am"]
+[ext_resource type="PackedScene" uid="uid://dast33no0qax8" path="res://addons/GDebugPanelGodot/Scenes/ButtonDebugActionWidget.tscn" id="3_r5431"]
+[ext_resource type="PackedScene" uid="uid://hy0wr7qtm7vx" path="res://addons/GDebugPanelGodot/Scenes/GDebugPanelSection.tscn" id="3_rmsxo"]
+[ext_resource type="PackedScene" uid="uid://ct2p5jkatd6p4" path="res://addons/GDebugPanelGodot/Scenes/ToggleDebugActionWidget.tscn" id="4_lwilv"]
+[ext_resource type="PackedScene" uid="uid://b2wgwoerjooqf" path="res://addons/GDebugPanelGodot/Scenes/IntDebugActionWidget.tscn" id="7_vbj6r"]
+[ext_resource type="PackedScene" uid="uid://chrq3yyve2gwu" path="res://addons/GDebugPanelGodot/Scenes/FloatDebugActionWidget.tscn" id="8_ubasg"]
+[ext_resource type="PackedScene" uid="uid://bvqepn62gdah" path="res://addons/GDebugPanelGodot/Scenes/EnumDebugActionWidget.tscn" id="9_cehxr"]
+[ext_resource type="Theme" uid="uid://ct64ildgsjeq5" path="res://addons/GDebugPanelGodot/Themes/GDebugPanelGodotTheme.tres" id="11_kq0m8"]
+
+[sub_resource type="Curve" id="Curve_ktxtq"]
+_data = [Vector2(0.608696, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_sp1a7"]
+width = 32
+curve = SubResource("Curve_ktxtq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_htfk8"]
+font = ExtResource("1_3wdhi")
+font_size = 35
+
+[node name="GDebugPanel" type="Control" node_paths=PackedStringArray("ContentVBox", "SearchLineEdit", "ClearSearchButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3o12x")
+ContentVBox = NodePath("Content/ScrollContainer/MarginContainer/ContentVBox")
+SearchLineEdit = NodePath("BottomBar/SearchLineEdit")
+ClearSearchButton = NodePath("BottomBar/ClearSearchButton")
+DebugPanelSection = ExtResource("3_rmsxo")
+InfoDebugActionWidget = ExtResource("3_es4am")
+DynamicInfoDebugActionWidget = ExtResource("3_c1kvk")
+ButtonDebugActionWidget = ExtResource("3_r5431")
+ToggleDebugActionWidget = ExtResource("4_lwilv")
+IntDebugActionWidget = ExtResource("7_vbj6r")
+FloatDebugActionWidget = ExtResource("8_ubasg")
+EnumDebugActionWidget = ExtResource("9_cehxr")
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="TopBar"]
+modulate = Color(0.152941, 0.152941, 0.152941, 0.784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_sp1a7")
+
+[node name="TitleLabel" type="Label" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 5.0
+offset_right = 220.0
+offset_bottom = -6.0
+grow_vertical = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_htfk8")
+vertical_alignment = 1
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="Content"]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 0.784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_sp1a7")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="ContentVBox" type="VBoxContainer" parent="Content/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="BottomBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackgroundTexture" type="TextureRect" parent="BottomBar"]
+modulate = Color(0.152941, 0.152941, 0.152941, 0.784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_sp1a7")
+
+[node name="SearchLineEdit" type="LineEdit" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -56.0
+offset_right = 136.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_kq0m8")
+theme_override_font_sizes/font_size = 25
+placeholder_text = "Search"
+
+[node name="ClearSearchButton" type="Button" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 144.0
+offset_top = -24.0
+offset_right = 192.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_kq0m8")
+theme_override_font_sizes/font_size = 25
+text = "X"

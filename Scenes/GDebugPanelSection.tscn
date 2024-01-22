@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://hy0wr7qtm7vx"]
+
+[ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/Views/DebugPanelSectionView.cs" id="1_wxa1s"]
+[ext_resource type="FontFile" uid="uid://s3os5vbnjky3" path="res://addons/GDebugPanelGodot/Fonts/SpaceMono-Bold.ttf" id="2_f8ftf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsj5w"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.784314)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egash"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgjd2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6q68v"]
+font = ExtResource("2_f8ftf")
+font_size = 30
+
+[node name="GDebugPanelSection" type="PanelContainer" node_paths=PackedStringArray("SectionButton", "SectionLabel", "CollapsableControl", "ContentParent")]
+custom_minimum_size = Vector2(100, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xsj5w")
+script = ExtResource("1_wxa1s")
+SectionButton = NodePath("VBoxContainer/TitlePanelContainer/SectionButton")
+SectionLabel = NodePath("VBoxContainer/TitlePanelContainer/SectionTile/SectionLabel")
+CollapsableControl = NodePath("VBoxContainer/SectionContent")
+ContentParent = NodePath("VBoxContainer/SectionContent/FlowContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TitlePanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egash")
+
+[node name="SectionButton" type="Button" parent="VBoxContainer/TitlePanelContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qgjd2")
+
+[node name="SectionTile" type="MarginContainer" parent="VBoxContainer/TitlePanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="SectionLabel" type="Label" parent="VBoxContainer/TitlePanelContainer/SectionTile"]
+layout_mode = 2
+text = "Section"
+label_settings = SubResource("LabelSettings_6q68v")
+clip_text = true
+
+[node name="SectionContent" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/SectionContent"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10

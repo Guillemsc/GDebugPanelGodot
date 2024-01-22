@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ct64ildgsjeq5"]
+
+[ext_resource type="FontFile" uid="uid://s3os5vbnjky3" path="res://addons/GDebugPanelGodot/Fonts/SpaceMono-Bold.ttf" id="1_yp1gh"]
+
+[resource]
+default_font = ExtResource("1_yp1gh")
+default_font_size = 20

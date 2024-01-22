@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://chrq3yyve2gwu"]
+
+[ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/DebugActions/Widgets/FloatDebugActionWidget.cs" id="1_0infx"]
+[ext_resource type="FontFile" uid="uid://s3os5vbnjky3" path="res://addons/GDebugPanelGodot/Fonts/SpaceMono-Bold.ttf" id="2_67elb"]
+[ext_resource type="Theme" uid="uid://ct64ildgsjeq5" path="res://addons/GDebugPanelGodot/Themes/GDebugPanelGodotTheme.tres" id="3_pk6md"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8bbui"]
+line_spacing = 0.0
+font = ExtResource("2_67elb")
+font_size = 20
+
+[node name="FloatDebugActionWidget" type="PanelContainer" node_paths=PackedStringArray("Label", "SpinBox")]
+custom_minimum_size = Vector2(70, 40)
+offset_right = 86.0
+offset_bottom = 40.0
+script = ExtResource("1_0infx")
+Label = NodePath("MarginContainer/HBoxContainer/Label")
+SpinBox = NodePath("MarginContainer/HBoxContainer/SpinBox")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Toggle"
+label_settings = SubResource("LabelSettings_8bbui")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_pk6md")
+alignment = 1
+custom_arrow_step = 1.0

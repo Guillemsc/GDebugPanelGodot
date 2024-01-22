@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb1ukmkhnqqee"]
+
+[ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/DebugActions/Widgets/DynamicInfoDebugActionWidget.cs" id="1_skqyi"]
+[ext_resource type="FontFile" uid="uid://s3os5vbnjky3" path="res://addons/GDebugPanelGodot/Fonts/SpaceMono-Bold.ttf" id="2_64363"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8bbui"]
+line_spacing = 0.0
+font = ExtResource("2_64363")
+font_size = 20
+
+[node name="DynamicInfoDebugActionWidget" type="PanelContainer" node_paths=PackedStringArray("Label")]
+custom_minimum_size = Vector2(70, 40)
+offset_right = 86.0
+offset_bottom = 40.0
+script = ExtResource("1_skqyi")
+Label = NodePath("MarginContainer/Label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0.701961, 0.701961, 0.701961, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Info"
+label_settings = SubResource("LabelSettings_8bbui")
+horizontal_alignment = 1
+vertical_alignment = 1
