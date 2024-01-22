@@ -7,12 +7,10 @@
 ![LogoWide](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/240af595-8a65-417e-aa3b-386834e6d62f)
 
 
-GTweens-Godot is a lightweight and versatile tweening library for Godot 4 with C#. 
-This library simplifies the process of creating animations and transitions in your Godot projects, allowing you to bring your game elements to life with ease.
+GDebugPanel-Godot is a lightweight and versatile debug panel for Godot 4 with C#. 
+This asset simplifies the process of creating debug panel and options in your Godot projects, allowing you to focus on what matters: gameplay.
 
-Unlike the default Godot tweening engine, which relies on nodes and their properties to create animations, this tweening engine doesn't require the use of nodes. 
-
-An extension that builds upon the [GTweens](https://github.com/Guillemsc/GTweens) library.
+It provides a suit of premade elements (buttons, int selector, float selector, enum selection, etc), while allwing for the creation of new ones, with ease.
 
 ## 🍰 Features
 - **Simple API**: GTweens-Godot provides an intuitive and easy-to-use API with C# extension methods.
