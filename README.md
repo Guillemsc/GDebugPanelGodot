@@ -4,13 +4,15 @@
 [![Twitter Follow](https://img.shields.io/badge/twitter-%406uillem-blue.svg?label=Follow)](https://twitter.com/6uillem)
 <img src="https://img.shields.io/badge/Godot-v4.x-%23478cbf?logo=godot-engine&logoColor=cyian&color=green">
 
-![LogoWide](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/240af595-8a65-417e-aa3b-386834e6d62f)
-
+![LogoWide](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/a1b75c7b-9fcc-4131-ad5e-4034f4869270)
 
 GDebugPanel-Godot is a lightweight and versatile debug panel for Godot 4 with C#. 
 This asset simplifies the process of creating debug panel and options in your Godot projects, allowing you to focus on what matters: gameplay.
 
 It provides a suit of premade elements (buttons, int selector, float selector, enum selection, etc), while allwing for the creation of new ones, with ease.
+
+![image](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/f7d36123-0f44-4a10-8ee5-3c725b355b16)
+
 
 ## 🍰 Features
 - **Simple API**: GTweens-Godot provides an intuitive and easy-to-use API with C# extension methods.
