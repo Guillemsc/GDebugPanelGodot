@@ -6,7 +6,7 @@
 
 ![LogoWide](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/a1b75c7b-9fcc-4131-ad5e-4034f4869270)
 
-GDebugPanel-Godot is a lightweight and versatile debug panel for Godot 4.x with C#. 
+GDebugPanel-Godot is a lightweight and versatile ingame debug panel for Godot 4.x with C#. 
 This asset simplifies the process of creating debug panel with options in your Godot projects, allowing you to focus on what matters: gameplay.
 
 A debug panel, is a user interface that provides developers with tools and information to aid in debugging and profiling during the development of a software application or game.
@@ -30,63 +30,12 @@ This asset provides a suit of premade elements (buttons, int selector, float sel
 
   ![AdaptativeArt](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/2e139eb8-d3a6-474d-bff2-a78ccec896bf)
 
-- **Versatile Easing Functions**: Choose from a variety of easing functions to achieve different animation effects, including linear, ease-in, ease-out, and custom curves.
-    ```csharp
-    public partial class EasingExample : Node
-    {
-        [Export] public Node2D Target1;
-        [Export] public Node2D Target2;
-	
-        [Export] public Easing Easing1;
-        [Export] public Curve Easing2;
-		
-        public override void _Ready()
-        {
-            GTween tween1 = Target1.TweenPositionX(100, 3);
-            tween1.SetEasing(Easing1);
-            tween1.Play();
-	        
-            GTween tween2 = Target2.TweenPositionX(100, 3);
-            tween2.SetEasing(Easing2);
-            tween2.Play();
-        }
-    }
-    ```
-  
-- **Looping**: Create looping animations with a single line of code, and control loop count and behavior.
-    ```csharp
-    public partial class LoopingTweenExample : Node
-    {
-        [Export] public Node2D Target;
-        [Export] public int Loops;
-		
-        public override void _Ready()
-        {
-             GTween tween = Target.TweenPositionX(150, 1);
-             tween.SetLoops(Loops);
-             tween.Play();
-        }
-    }
-    ```
-  
-- **Delays**: Specify delays, allowing precise timing of your animations.
-    ```csharp
-    GTween tween = GTweenSequenceBuilder.New()
-        .AppendTime(0.5f)
-        .Build();
-    ```
+- **Fuzzy search**: Quicly find the options you were looking for with the search bar!
 
-- **Callbacks**: Attach callbacks to tweens for event handling at various points in the animation timeline.
-    ```csharp
-    void Callback()
-    {
-    }
+  ![Gif](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/5f47d808-69ab-4e5d-8aa9-18f0be2c2f87)
 
-    GTween tween = GTweenSequenceBuilder.New()
-        .AppendCallback(Callback)
-        .Build();
-    ```
-- **Safety**: When a node that's being tweened becomes invalid or gets destroyed, the tween automatically handles that on a safe manner, and kills itself.
+- **Lightweight**: While your game is running, the panel does not exist at all until you want to show it.
+When is hidden again, the panel is completely destroyed, so it does not affect to the preformance of your game.
 
 ## 📦 Installation
 
@@ -95,20 +44,26 @@ This asset provides a suit of premade elements (buttons, int selector, float sel
 2. Unpack the `GDebugPanelGodot.zip` folder into the Godot's project `addons/` folder. 
 
 ## 📚 Getting started
-### Nomenclature
-- Tween: a generic word that indicates some or multiple values being animated.
-- Sequence: an combination of tweens that get animated as a group.
-
-### Prefixes
-Prefixes are important to use the most out of IntelliSense, so try to remember these:
-- **Tween**: prefix for all tween shortcuts (operations that can be started directly from a known object, like a Node2D or a Control).
+### Showing / Hiding
+- For **showing** the panel, you just need to call the `Show` method, providing as a parameter the Control where you want the panel to be placed at.
     ```csharp
-    node2D.TweenPositionX(100f, 1f);
-    control.TweenSizeY(200f, 2f);
+    GDebugPanel.Show(Control);
     ```
-- **Set**: prefix for all settings that can be chained to a tween.
+- For **hiding** the panel, just call the `Hide` method.
     ```csharp
-    myTween.SetLoops(4).SetEasing(Easing.InOutCubic);
+    GDebugPanel.Hide();
+    ```
+
+### Sections
+Debug options are divided within different sections. These sections allow you to better organize your options.
+You cannot create a debug option outside of a section.
+- **Creating** a new section is very simple, you just need to call `AddSection` and provide a section name: 
+    ```csharp
+    IDebugActionsSection section = GDebugPanel.AddSection("Section name");
+    ```
+- **Removing** a section is equally as simple. Just call `RemoveSection`, and provide the section you want to remove.
+    ```csharp
+    GDebugPanel.RemoveSection(section);
     ```
 - **On**: prefix for all callbacks that can be chained to a tween.
     ```csharp
