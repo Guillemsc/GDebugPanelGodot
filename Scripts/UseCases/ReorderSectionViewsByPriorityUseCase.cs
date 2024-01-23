@@ -11,13 +11,24 @@ public static class ReorderSectionViewsByPriorityUseCase
 {
     public static void Execute(DebugActionsData debugActionsData)
     {
-        IOrderedEnumerable<KeyValuePair<DebugActionsSection, DebugPanelSectionView>> orderedSectionViews = 
-            debugActionsData.SectionsViews.OrderByDescending(o => o.Key.Priority);
-
+        IOrderedEnumerable<DebugActionsSection> orderedSections = debugActionsData.Sections.OrderByDescending(
+            o => o.Priority
+        );
+        
         int index = 0;
-        foreach (KeyValuePair<DebugActionsSection, DebugPanelSectionView> item in orderedSectionViews)
+        foreach (DebugActionsSection debugActionsSection in orderedSections)
         {
-            item.Value.SetSiblingIndex(index);
+            bool viewFound = debugActionsData.SectionsViews.TryGetValue(
+                debugActionsSection,
+                out DebugPanelSectionView? debugPanelSectionView
+            );
+
+            if (!viewFound)
+            {
+                continue;
+            }
+            
+            debugPanelSectionView!.SetSiblingIndex(index);
             ++index;
         }
     }
