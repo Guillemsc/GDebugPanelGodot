@@ -13,47 +13,22 @@ A debug panel, is a user interface that provides developers with tools and infor
 
 This asset provides a suit of premade elements (buttons, int selector, float selector, enum selection, etc), while allwing for the creation of new ones, with ease.
 
-![image](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/f7d36123-0f44-4a10-8ee5-3c725b355b16)
-
+![OptionsArt](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/139736d6-ffb8-4f85-a962-14597b93723c)
 
 ## 🍰 Features
 - **Simple API**: GDebugPanel-Godot provides an intuitive and easy-to-use API with C#.
     ```csharp
-    public partial class TweenExample : Node
-    {
-        [Export] public Node2D Target;
-		
-        public override void _Ready()
-        {
-            Target.TweenPosition(new Vector2(100, 0), 3)
-                .SetEasing(Easing.InOutCubic)
-                .Play();
-        }
-    }
+    GDebugPanel.Show(Control);
+    GDebugPanel.Hide();
+
+    IDebugActionsSection section = GDebugPanel.AddSection("Section name");
+    section.AddButton("Button name", () => GD.Print("Button 2"));
+    section.AddInt("Int selector name", val => _int = val, () => _int);
     ```
 
-- **Sequencing**: Easily chain multiple tweens together to create complex sequences of animations.
-    ```csharp
-    public partial class PlayTweenSequenceExample : Node
-    {
-        [Export] public Node2D Target;
-		
-        public override void _Ready()
-        {
-            GTween tween = GTweenSequenceBuilder.New()
-                .Append(Target.TweenPositionX(100f, 0.5f))
-                    .Join(Target.TweenScale(new Vector2(2f, 2f), 1f))
-                .AppendTime(0.5f)
-                    .JoinCallback(() => GD.Print("I'm waiting some time!"))
-                .Append(Target.TweenPositionX(0f, 1f))
-                .AppendCallback(() => GD.Print("I'm finished!"))
-                .Build();
+- **Adaptative**: The different widgets support and adapt to different screen aspect rations, making it a good fit for both, desktop and mobile.
 
-            tween.SetEasing(Easing.InOutCubic);
-            tween.Play();
-        }
-    }
-    ```
+  ![AdaptativeArt](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/2e139eb8-d3a6-474d-bff2-a78ccec896bf)
 
 - **Versatile Easing Functions**: Choose from a variety of easing functions to achieve different animation effects, including linear, ease-in, ease-out, and custom curves.
     ```csharp
