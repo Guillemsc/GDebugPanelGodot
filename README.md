@@ -30,6 +30,10 @@ This asset provides a suit of premade elements (buttons, int selector, float sel
 
   ![AdaptativeArt](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/2e139eb8-d3a6-474d-bff2-a78ccec896bf)
 
+- **Organization**: Organize your options using collapsable sections.
+
+  ![Gif2](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/a181cbeb-eb6a-4b8e-9de0-118f9b27d2bb)
+
 - **Fuzzy search**: Quicly find the options you were looking for with the search bar!
 
   ![Gif](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/5f47d808-69ab-4e5d-8aa9-18f0be2c2f87)
@@ -65,9 +69,15 @@ You cannot create a debug option outside of a section.
     ```csharp
     GDebugPanel.RemoveSection(section);
     ```
-- **On**: prefix for all callbacks that can be chained to a tween.
+    
+Sections can be both, collapsable and non collapsable. You can decide which one you want by calling:
+- `AddSection ` for a collapsable one.
     ```csharp
-    myTween.OnStart(myStartFunction).OnComplete(myCompleteFunction);
+    IDebugActionsSection section = GDebugPanel.AddSection("Section name");
+    ```
+- `AddNonCollapsableSection` for a non collapsable one.
+    ```csharp
+    IDebugActionsSection section = GDebugPanel.AddNonCollapsableSection("Section name");
     ```
  
 ### Generic tweening
