@@ -7,6 +7,7 @@
 ![LogoWide](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/a1b75c7b-9fcc-4131-ad5e-4034f4869270)
 
 GDebugPanel-Godot is a lightweight and versatile ingame debug panel for Godot 4.x with C#. 
+It can be incredible useful to be able to modify gameplay parameters while on the target device. 
 This asset simplifies the process of creating debug panel with options in your Godot projects, allowing you to focus on what matters: gameplay.
 
 A debug panel, is a user interface that provides developers with tools and information to aid in debugging and profiling during the development of a software application or game.
@@ -53,9 +54,11 @@ When is hidden again, the panel is completely destroyed, so it does not affect t
 
 To quickly check if everything has been setup properly, you can go to GDebugPanelGodot/Examples/Scenes/ and open any of the example scenes. When you run any of those scenes, a simple functionality example should play.
 
-⚠️ Reminders:
-- It's very important that the asset is placed under the `addons/` folder. Not doing so will make the asset not work.
-- This asset is not setup as a plugin. Just adding it to your project will make it work.
+> [!WARNING]
+> It's very important that the asset is placed under the `addons/` folder. Not doing so will make the asset not work.
+
+> [!NOTE]
+> This asset is not setup as a plugin. Just adding it to your project will make it work.
 
 ## 📚 Getting started
 ### Showing / Hiding
@@ -89,8 +92,45 @@ Sections can be both, collapsable and non collapsable. You can decide which one 
     ```csharp
     IDebugActionsSection section = GDebugPanel.AddNonCollapsableSection("Section name");
     ```
+
+### Automatic debug options
+This asset has the ability of scanning for properties and methods in C# classes, to automatically create de adecuate widgets.
+
+One of such classes may look like this:
+
+```csharp
+public sealed class ExampleOptionsObject
+{
+    public enum ExampleEnum
+    {
+        Enum1,
+        Enum2,
+        Enum3,
+        SomeLongValueThat,
+    }
+    
+    public void ButtonExample() => GD.Print("Button Option!");
+    public bool ToggleExample { get; set; }
+    public string DynamicInfoExample { get; set; } = "Dynamic Info";
+    public string InfoExample => "Info";
+    public int IntExample { get; set; }
+    public float FloatExample { get; set; }
+    public ExampleEnum EnumExample { get; set; }
+}
+```
+
+Then we add the class like this:
+
+```csharp
+GDebugPanel.AddSection("Section name", new ExampleOptionsObject());
+```
+
+And we will get debug options like this:
+
+![Reflection](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/9b75af62-8de2-4295-ac66-ababfec26ed4)
+
  
-### Debug options
+### Manual debug options
 This is the most part of this assets, the debug options (or widgets). Once you have a section instance, you have some debug options avaliable:
 
 - Info: a static string that cannot be changed one submited.
