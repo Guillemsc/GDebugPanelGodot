@@ -124,6 +124,134 @@ This is the most part of this assets, the debug options (or widgets). Once you h
     }
     ExampleEnum someEnum = default;
     section.AddEnum("Enum name" val => someEnum = val, () => someEnum);
-    ``` 
+    ```
+
+### Creating more debug options
+Some times, your game may have specific needs that cannot be properly met by the default provided widgets. That's why you can create your own.
+We are going to use the Int widget as an example.
+
+1. The first thing you need to do is create a new class and inherit from `IDebugAction`. This interface will force you to implement `DebugActionWidget InstantiateWidget(DebugPanelView debugPanelView)` method,
+which is responsable for instantiating the widget on the Ui. We will not implement it for now.
+
+    ```csharp
+    public sealed class IntDebugAction : IDebugAction
+    {    
+        public IntDebugAction()
+        {
+        }
+    
+        public DebugActionWidget InstantiateWidget(DebugPanelView debugPanelView)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    ```
+
+2. Next, we need a new `DebugActionWidget`, which will be the actual Node placed on the Ui. Since the widget is made of a label and a spin box, we will add references to it.
+`LabelAutowrapSelectionByControlWidthController` is an utility class that helps wrap text when it cannot fit its designated width.
+
+    ```csharp
+    public partial class IntDebugActionWidget : DebugActionWidget
+    {
+        [Export] public LabelAutowrapSelectionByControlWidthController? LabelAutowrapController;
+        [Export] public Label? Label;
+        [Export] public SpinBox? SpinBox;
+    }
+    ```
+
+3. Going back to the `IntDebugAction` class, we need to implement `InstantiateWidget`, by instantiating the created `IntDebugActionWidget`. For this, you will need to create the
+requiered Ui PackedScene, add the `IntDebugActionWidget` script to it, and reference this PackedScene on your `IntDebugAction` in any prefered way.
+In the case of internal widgets, they are references on the main debug panel.
+
+    ```csharp
+    public sealed class IntDebugAction : IDebugAction
+    {    
+        public IntDebugAction()
+        {
+        }
+    
+        public DebugActionWidget InstantiateWidget(DebugPanelView debugPanelView)
+        {
+            // IntDebugActionWidget is a PackedScene
+            IntDebugActionWidget widget = debugPanelView.IntDebugActionWidget!.Instantiate<IntDebugActionWidget>();
+            return widget;
+        }
+    }
+    ```
+4. For being able to use this new action on a section, just add an extension method that does that:
+
+    ```csharp
+    public static IDebugAction AddInt(this IDebugActionsSection section)
+    {
+        IDebugAction debugAction = new IntDebugAction();
+        section.Add(debugAction);
+        return debugAction;
+    }
+    ```
+
+5. Cool! If all went well, you should now be able to see your widget on the debug panel once you call your Add method. Now we just need to add functionality to it.
+We first add all the necessary parameters to our action. In this case, the name of the option, and a getter and a setter that will be called by our widget.
+
+   ```csharp
+    public sealed class IntDebugAction : IDebugAction
+    {
+        public string Name { get; }
+        public Action<int> SetAction { get; }
+        public Func<int> GetAction { get; }
+    
+        public IntDebugAction(string name, Action<int> setAction, Func<int> getAction)
+        {
+            Name = name;
+            SetAction = setAction;
+            GetAction = getAction;
+        }
+    
+        public DebugActionWidget InstantiateWidget(DebugPanelView debugPanelView)
+        {
+            IntDebugActionWidget widget = debugPanelView.IntDebugActionWidget!.Instantiate<IntDebugActionWidget>();
+            widget.Init(debugPanelView.ContentControl!, Name, SetAction, GetAction);
+            return widget;
+        }
+    }
+    ```
+
+    ```csharp
+    public partial class IntDebugActionWidget : DebugActionWidget
+    {
+        [Export] public LabelAutowrapSelectionByControlWidthController? LabelAutowrapController;
+        [Export] public Label? Label;
+        [Export] public SpinBox? SpinBox;
+    
+        Action<int>? _setAction;
+        Func<int>? _getAction;
+    
+        public void Init(Control sizeControl, string name, Action<int> setAction, Func<int> getAction)
+        {
+            LabelAutowrapController!.SizeControl = sizeControl;
+            _setAction = setAction;
+            _getAction = getAction;
+        
+            Label!.Text = name;
+            SpinBox.MinValue = int.MinValue;
+            SpinBox.MaxValue = int.MaxValue;
+            SpinBox.Value = getAction.Invoke();
+            SpinBox.ConnectSpinBoxValueChanged(Changed);
+        }
+    
+        public override bool Focus()
+        {
+            SpinBox!.GrabFocus();
+            return true;
+        }
+
+        void Changed(float value)
+        {
+            int truncatedValue = (int)value;
+            _setAction!.Invoke(truncatedValue);
+            truncatedValue = _getAction!.Invoke();
+            SpinBox!.SetValueNoSignal(truncatedValue);
+        }
+    }
+    ```
  
 
