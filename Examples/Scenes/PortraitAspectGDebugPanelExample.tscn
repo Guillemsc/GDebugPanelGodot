@@ -4,11 +4,12 @@
 
 [node name="PortraitAspectGDebugPanelExample" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 488.0
-offset_right = -424.0
+offset_left = -184.0
+offset_right = 184.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3n0vw")
