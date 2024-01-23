@@ -26,7 +26,7 @@ This asset provides a suit of premade elements (buttons, int selector, float sel
     section.AddInt("Int selector name", val => _int = val, () => _int);
     ```
 
-- **Adaptative**: The different widgets support and adapt to different screen aspect rations, making it a good fit for both, desktop and mobile.
+- **Adaptative**: The different widgets support and adapt to different screen aspect ratios, making it a good fit for both, desktop and mobile.
 
   ![AdaptativeArt](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/2e139eb8-d3a6-474d-bff2-a78ccec896bf)
 
