@@ -18,17 +18,12 @@ This asset provides a suit of premade elements (buttons, int selector, float sel
 ## 🍰 Features
 - **Simple API**: GDebugPanel-Godot provides an intuitive and easy-to-use API with C#.
     ```csharp
-    public partial class TweenExample : Node
-    {
-        [Export] public Node2D Target;
-		
-        public override void _Ready()
-        {
-            Target.TweenPosition(new Vector2(100, 0), 3)
-                .SetEasing(Easing.InOutCubic)
-                .Play();
-        }
-    }
+    GDebugPanel.Show(this);
+    GDebugPanel.Hide();
+
+    IDebugActionsSection section = GDebugPanel.AddSection("Section name");
+    section.AddButton("Button name", () => GD.Print("Button 2"));
+    section.AddInt("Int selector name", val => _int = val, () => _int);
     ```
 
 - **Adaptative**: The different widgets support and adapt to different screen aspect rations, making it a good fit for both, desktop and mobile.
