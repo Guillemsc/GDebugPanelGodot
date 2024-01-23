@@ -30,6 +30,10 @@ This asset provides a suit of premade elements (buttons, int selector, float sel
 
   ![AdaptativeArt](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/2e139eb8-d3a6-474d-bff2-a78ccec896bf)
 
+- **Smart**: You can automatically generate a debug options section using a class. Using reflection, changes that occur on the debug panel will affect the class instance.
+
+  ![AutomaticArt](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/08886a94-e062-4532-a907-81c6482b2696)
+
 - **Organization**: Organize your options using collapsable sections.
 
   ![Gif2](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/a181cbeb-eb6a-4b8e-9de0-118f9b27d2bb)
@@ -80,8 +84,8 @@ Sections can be both, collapsable and non collapsable. You can decide which one 
     IDebugActionsSection section = GDebugPanel.AddNonCollapsableSection("Section name");
     ```
  
-### Generic tweening
-This is the most flexible way of tweening and allows you to tween almost any value.
+### Debug options
+This is the most part of this assets, the debug options, or widgets. Once you have a section instance
 ```csharp
 // For default C# values (int, float, etc)
 GTweenExtensions.Tween(getter, setter, to, duration)
