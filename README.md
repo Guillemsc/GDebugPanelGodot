@@ -18,7 +18,7 @@ This asset provides a suit of premade elements (buttons, int selector, float sel
 ## 🍰 Features
 - **Simple API**: GDebugPanel-Godot provides an intuitive and easy-to-use API with C#.
     ```csharp
-    GDebugPanel.Show(this);
+    GDebugPanel.Show(Control);
     GDebugPanel.Hide();
 
     IDebugActionsSection section = GDebugPanel.AddSection("Section name");
