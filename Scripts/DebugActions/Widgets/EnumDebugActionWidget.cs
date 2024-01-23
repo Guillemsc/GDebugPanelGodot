@@ -1,21 +1,25 @@
 using System;
 using System.Collections.Generic;
 using GDebugPanelGodot.Extensions;
+using GDebugPanelGodot.Nodes;
 using Godot;
 
 namespace GDebugPanelGodot.DebugActions.Widgets;
 
 public partial class EnumDebugActionWidget : DebugActionWidget
 {
+    [Export] public LabelAutowrapSelectionByControlWidthController? LabelAutowrapController;
     [Export] public Label? Label;
     [Export] public OptionButton? OptionButton;
+    [Export] public int MaxCharsPerOption = 10;
 
     List<object>? _enumValues;
     Action<object>? _setAction;
     Func<object>? _getAction;
     
-    public void Init(string name, List<object> enumValues, Action<object> setAction, Func<object> getAction)
+    public void Init(Control sizeControl, string name, List<object> enumValues, Action<object> setAction, Func<object> getAction)
     {
+        LabelAutowrapController!.SizeControl = sizeControl;
         _enumValues = enumValues;
         _setAction = setAction;
         _getAction = getAction;
@@ -24,7 +28,8 @@ public partial class EnumDebugActionWidget : DebugActionWidget
 
         foreach (object item in enumValues)
         {
-            OptionButton!.AddItem(item.ToString());
+            string itemName = item.ToString()!.SubstringSafe(0, MaxCharsPerOption);
+            OptionButton!.AddItem(itemName);
         }
 
         OptionButton!.ConnectOptionButtonItemSelected(Selected);

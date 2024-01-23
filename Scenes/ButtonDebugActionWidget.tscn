@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dast33no0qax8"]
+[gd_scene load_steps=5 format=3 uid="uid://dast33no0qax8"]
 
 [ext_resource type="FontFile" uid="uid://s3os5vbnjky3" path="res://addons/GDebugPanelGodot/Fonts/SpaceMono-Bold.ttf" id="1_absor"]
 [ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/DebugActions/Widgets/ButtonDebugActionWidget.cs" id="1_ysujc"]
+[ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/Nodes/LabelAutowrapSelectionByControlWidthController.cs" id="3_n45nj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8bbui"]
 line_spacing = 0.0
 font = ExtResource("1_absor")
 font_size = 20
 
-[node name="ButtonDebugActionWidget" type="MarginContainer" node_paths=PackedStringArray("Label", "Button")]
+[node name="ButtonDebugActionWidget" type="MarginContainer" node_paths=PackedStringArray("LabelAutowrapController", "Label", "Button")]
 custom_minimum_size = Vector2(70, 40)
 offset_right = 86.0
 offset_bottom = 40.0
 script = ExtResource("1_ysujc")
+LabelAutowrapController = NodePath("MarginContainer/Label")
 Label = NodePath("MarginContainer/Label")
 Button = NodePath("Button")
 
@@ -27,10 +29,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" node_paths=PackedStringArray("ControlsSizeToSubstract")]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Bastant dios"
 label_settings = SubResource("LabelSettings_8bbui")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_n45nj")
+MaxSizeOffset = -67.0
+ControlsSizeToSubstract = []

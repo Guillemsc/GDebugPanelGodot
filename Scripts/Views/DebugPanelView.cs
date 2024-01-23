@@ -4,6 +4,7 @@ namespace GDebugPanelGodot.Views;
 
 public partial class DebugPanelView : Control
 {
+    [Export] public Control? ContentControl;
     [Export] public Control? ContentVBox;
     [Export] public LineEdit? SearchLineEdit;
     [Export] public Button? ClearSearchButton;

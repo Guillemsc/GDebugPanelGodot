@@ -18,7 +18,7 @@ public sealed class DynamicInfoDebugAction : IDebugAction
     public DebugActionWidget InstantiateWidget(DebugPanelView debugPanelView)
     {
         DynamicInfoDebugActionWidget widget = debugPanelView.DynamicInfoDebugActionWidget!.Instantiate<DynamicInfoDebugActionWidget>();
-        widget.Init(GetInfoAction);
+        widget.Init(debugPanelView.ContentControl!, GetInfoAction);
         return widget;
     }
 }

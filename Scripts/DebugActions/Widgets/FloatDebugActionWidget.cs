@@ -1,19 +1,22 @@
 using System;
 using GDebugPanelGodot.Extensions;
+using GDebugPanelGodot.Nodes;
 using Godot;
 
 namespace GDebugPanelGodot.DebugActions.Widgets;
 
 public partial class FloatDebugActionWidget : DebugActionWidget
 {
+    [Export] public LabelAutowrapSelectionByControlWidthController? LabelAutowrapController;
     [Export] public Label? Label;
     [Export] public SpinBox? SpinBox;
     
     Action<float>? _setAction;
     Func<float>? _getAction;
     
-    public void Init(string name, float step, Action<float> setAction, Func<float> getAction)
+    public void Init(Control sizeControl, string name, float step, Action<float> setAction, Func<float> getAction)
     {
+        LabelAutowrapController!.SizeControl = sizeControl;
         _setAction = setAction;
         _getAction = getAction;
         

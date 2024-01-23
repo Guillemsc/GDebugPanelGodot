@@ -1,11 +1,13 @@
 using System;
 using GDebugPanelGodot.Extensions;
+using GDebugPanelGodot.Nodes;
 using Godot;
 
 namespace GDebugPanelGodot.DebugActions.Widgets;
 
 public partial class ToggleDebugActionWidget : DebugActionWidget
 {
+    [Export] public LabelAutowrapSelectionByControlWidthController? LabelAutowrapController;
     [Export] public Label? Label;
     [Export] public Button? Button;
     [Export] public CheckButton? CheckButton;
@@ -13,8 +15,9 @@ public partial class ToggleDebugActionWidget : DebugActionWidget
     Action<bool>? _setAction;
     Func<bool>? _getAction;
     
-    public void Init(string name, Action<bool> setAction, Func<bool> getAction)
+    public void Init(Control sizeControl, string name, Action<bool> setAction, Func<bool> getAction)
     {
+        LabelAutowrapController!.SizeControl = sizeControl;
         _setAction = setAction;
         _getAction = getAction;
         

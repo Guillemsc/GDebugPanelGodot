@@ -1,19 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct2p5jkatd6p4"]
+[gd_scene load_steps=6 format=3 uid="uid://ct2p5jkatd6p4"]
 
 [ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/DebugActions/Widgets/ToggleDebugActionWidget.cs" id="1_02jn5"]
 [ext_resource type="Texture2D" uid="uid://d4glal3b0nkxi" path="res://addons/GDebugPanelGodot/Textures/Icons/ToggleOff.png" id="2_mp18u"]
 [ext_resource type="FontFile" uid="uid://s3os5vbnjky3" path="res://addons/GDebugPanelGodot/Fonts/SpaceMono-Bold.ttf" id="2_yhyyu"]
+[ext_resource type="Script" path="res://addons/GDebugPanelGodot/Scripts/Nodes/LabelAutowrapSelectionByControlWidthController.cs" id="4_6y6d5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8bbui"]
 line_spacing = 0.0
 font = ExtResource("2_yhyyu")
 font_size = 20
 
-[node name="ToggleDebugActionWidget" type="MarginContainer" node_paths=PackedStringArray("Label", "Button", "CheckButton")]
+[node name="ToggleDebugActionWidget" type="MarginContainer" node_paths=PackedStringArray("LabelAutowrapController", "Label", "Button", "CheckButton")]
 custom_minimum_size = Vector2(70, 40)
 offset_right = 86.0
 offset_bottom = 40.0
 script = ExtResource("1_02jn5")
+LabelAutowrapController = NodePath("MarginContainer/HBoxContainer/Label")
 Label = NodePath("MarginContainer/HBoxContainer/Label")
 Button = NodePath("Button")
 CheckButton = NodePath("MarginContainer/HBoxContainer/CheckButton")
@@ -24,7 +26,7 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
@@ -40,10 +42,13 @@ focus_mode = 0
 mouse_filter = 2
 theme_override_icons/unchecked = ExtResource("2_mp18u")
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("ControlsSizeToSubstract")]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Toggle"
 label_settings = SubResource("LabelSettings_8bbui")
-horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_6y6d5")
+MaxSizeOffset = -107.0
+ControlsSizeToSubstract = []

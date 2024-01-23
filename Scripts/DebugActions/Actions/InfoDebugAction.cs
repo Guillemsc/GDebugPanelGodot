@@ -1,6 +1,5 @@
 using GDebugPanelGodot.DebugActions.Widgets;
 using GDebugPanelGodot.Views;
-using Godot;
 
 namespace GDebugPanelGodot.DebugActions.Actions;
 
@@ -16,7 +15,7 @@ public sealed class InfoDebugAction : IDebugAction
     public DebugActionWidget InstantiateWidget(DebugPanelView debugPanelView)
     {
         InfoDebugActionWidget widget = debugPanelView.InfoDebugActionWidget!.Instantiate<InfoDebugActionWidget>();
-        widget.Init(Name);
+        widget.Init(debugPanelView.ContentControl!, Name);
         return widget;
     }
 }

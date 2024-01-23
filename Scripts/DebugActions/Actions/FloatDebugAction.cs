@@ -23,7 +23,7 @@ public sealed class FloatDebugAction : IDebugAction
     public DebugActionWidget InstantiateWidget(DebugPanelView debugPanelView)
     {
         FloatDebugActionWidget widget = debugPanelView.FloatDebugActionWidget!.Instantiate<FloatDebugActionWidget>();
-        widget.Init(Name, Step, SetAction, GetAction);
+        widget.Init(debugPanelView.ContentControl!, Name, Step, SetAction, GetAction);
         return widget;
     }
 }

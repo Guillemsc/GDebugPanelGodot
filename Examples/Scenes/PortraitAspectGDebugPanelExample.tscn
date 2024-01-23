@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhdj2obh8gba5"]
+
+[ext_resource type="Script" path="res://addons/GDebugPanelGodot/Examples/Scripts/Examples/GDebugPanelExample.cs" id="1_3n0vw"]
+
+[node name="PortraitAspectGDebugPanelExample" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 488.0
+offset_right = -424.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3n0vw")

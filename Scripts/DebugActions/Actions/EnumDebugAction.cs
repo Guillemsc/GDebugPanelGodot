@@ -32,7 +32,7 @@ public sealed class EnumDebugAction : IDebugAction
             actualEnumValues.Add(item);
         }
         
-        widget.Init(Name, actualEnumValues, SetAction, GetAction);
+        widget.Init(debugPanelView.ContentControl!, Name, actualEnumValues, SetAction, GetAction);
         return widget;
     }
 }
