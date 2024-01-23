@@ -1,5 +1,4 @@
 using GDebugPanelGodot.DebugActions.Actions;
-using GUtils.Extensions;
 
 namespace GDebugPanelGodot.UseCases;
 
@@ -7,7 +6,7 @@ public static class ShouldDebugActionBeVisibleWithSerachFieldUseCase
 {
     public static bool Execute(string searchText, IDebugAction debugAction)
     {
-        if (searchText.IsNullOrEmpty())
+        if (string.IsNullOrEmpty(searchText))
         {
             return true;
         }

@@ -27,6 +27,7 @@ public static class InstantiateDebugPanelViewUseCase
 
         DebugPanelView debugPanelView = cacheData.DebugPanelViewScene.Instantiate<DebugPanelView>();
         debugPanelView.SetParent(parent);
+        debugPanelView.SetAnchorsPreset(Control.LayoutPreset.FullRect);
 
         debugPanelData.DebugPanelView = debugPanelView;
     }

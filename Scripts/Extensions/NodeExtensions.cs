@@ -32,7 +32,7 @@ public static class NodeExtensions
         }
 
         int childsCount = parent.GetChildren().Count;
-        int finalIndex = GUtils.Extensions.MathExtensions.Clamp(index, 0, childsCount);
+        int finalIndex = Mathf.Clamp(index, 0, childsCount);
         
         parent.MoveChild(node, finalIndex);
     }
