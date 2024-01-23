@@ -53,9 +53,11 @@ When is hidden again, the panel is completely destroyed, so it does not affect t
 
 To quickly check if everything has been setup properly, you can go to GDebugPanelGodot/Examples/Scenes/ and open any of the example scenes. When you run any of those scenes, a simple functionality example should play.
 
-⚠️ Reminders:
-- It's very important that the asset is placed under the `addons/` folder. Not doing so will make the asset not work.
-- This asset is not setup as a plugin. Just adding it to your project will make it work.
+> [!WARNING]
+> It's very important that the asset is placed under the `addons/` folder. Not doing so will make the asset not work.
+
+> [!NOTE]
+> This asset is not setup as a plugin. Just adding it to your project will make it work.
 
 ## 📚 Getting started
 ### Showing / Hiding
