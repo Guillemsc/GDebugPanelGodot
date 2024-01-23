@@ -122,8 +122,8 @@ This is the most part of this assets, the debug options (or widgets). Once you h
         Enum2,
         Enum3,
     }
-    ExampleEnum enum = default;
-    section.AddEnum("Enum name" val => enum = val, () => enum);
+    ExampleEnum someEnum = default;
+    section.AddEnum("Enum name" val => someEnum = val, () => someEnum);
     ``` 
  
 
