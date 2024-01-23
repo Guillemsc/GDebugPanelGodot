@@ -6,7 +6,7 @@
 
 ![LogoWide](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/a1b75c7b-9fcc-4131-ad5e-4034f4869270)
 
-GDebugPanel-Godot is a lightweight and versatile debug panel for Godot 4 with C#. 
+GDebugPanel-Godot is a lightweight and versatile debug panel for Godot 4.x with C#. 
 This asset simplifies the process of creating debug panel with options in your Godot projects, allowing you to focus on what matters: gameplay.
 
 A debug panel, is a user interface that provides developers with tools and information to aid in debugging and profiling during the development of a software application or game.
