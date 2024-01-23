@@ -49,7 +49,7 @@ When is hidden again, the panel is completely destroyed, so it does not affect t
 
 ### From releases:
 1. [Download the latest GDebugPanelGodot.zip release](https://github.com/Guillemsc/GDebugPanelGodot/releases/latest).
-2. Unpack the `GDebugPanelGodot.zip` folder into the Godot's project `addons/` folder.
+2. Unpack the `GDebugPanelGodot.zip` folder into the Godot's root folder. Make sure the GDebugPanelGodot is inside the `addons/` folder.
 
 To quickly check if everything has been setup properly, you can go to GDebugPanelGodot/Examples/Scenes/ and open any of the example scenes. When you run any of those scenes, a simple functionality example should play.
 
