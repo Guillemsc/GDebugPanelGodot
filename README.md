@@ -48,10 +48,22 @@ When is hidden again, the panel is completely destroyed, so it does not affect t
 
 ## 📦 Installation
 
+### Form Asset Library
+1. Inside Godot, open the AssetLib tab.
+   
+![image](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/27f22155-50ad-40d1-b919-058b0f68afbe)
+
+2. Search for and select "GDebugPanel (C#)".
+   
+![image](https://github.com/Guillemsc/GDebugPanelGodot/assets/17142208/607777b0-f903-410d-8f6d-05d4c9096769)
+
+3. Download then install the asset.
+
 ### From releases:
 1. [Download the latest GDebugPanelGodot.zip release](https://github.com/Guillemsc/GDebugPanelGodot/releases/latest).
 2. Unpack the `GDebugPanelGodot.zip` folder into the Godot's root folder. Make sure the GDebugPanelGodot is inside the `addons/` folder.
 
+## ✔️ After installing
 To quickly check if everything has been setup properly, you can go to GDebugPanelGodot/Examples/Scenes/ and open any of the example scenes. When you run any of those scenes, a simple functionality example should play.
 
 > [!WARNING]
